@@ -1,0 +1,539 @@
+Table Of Contents:
+
+Chapter 1 – Introduction to Application Security (AppSec)
+Chapter 2 – The AppSec Knowledgebase
+Chapter 3 – The Basics
+Chapter 4 – SAST vs The Rest of the Field
+Chapter 5 – The Secure SDLC (sSDLC)
+Chapter 6 – AppSec Standards and Benchmarks
+Chapter 7 – Top AppSec Gurus to Follow on Twitter
+Chapter 8 – Top AppSec Blogs to Learn From
+Chapter 9 – Top AppSec Websites To Practice Hacking (Legally)
+Chapter 10 – The Game of Hacks 
+
+                                                                        [  Application Security ]
+Applications form the lifeline of any business today – and they are under attack more than ever before. Where previously we focused our attention on securing organizations’ network parameters, today the application level is where the focus is for attackers.
+According to Verizon’s 2014 Data Breach Investigations Report, web applications “remain the proverbial punching bag of the internet,” with about 80% of attacks in the application layer, as Gartner has stated. Taking proactive measures to protect your company and customer data is no longer an option: It is a business imperative for enterprises across all industries.
+In 2013, the Ponemon Institute’s ‘Cost of a Data Breach Report’ found that security incidents in the U.S. averaged a total cost of $5.4 million. Preventing just one similar security incident would more than cover the cost of application security and prove your security programs value.
+Application Security is built around the concept of ensuring that the code written for an application does what it was built to do, and keeps the contained data secure.
+
+According to Gartner, application security puts a primary focus on three elements:
+
+Reducing security vulnerabilities and risks
+Improving security features and functions such as authentication, encryption or auditing
+Integrating with the enterprise security infrastructure
+
+What is Static Application Security Testing?
+Static Application Security Testing (SAST), also known as white-box testing, has proven to be one of the most effective ways to eliminate software flaws.
+No matter how much effort went into a thorough architecture and design, applications can still sustain vulnerabilities. Static Application Security Testing examines the “blueprint” of your application, without executing the code. SAST solutions create a meticulous model of how the application interacts with users and other data and identifies critical vulnerabilities quickly with the help of automation.
+The technology works to detect flaws such as SQL injection 2, Cross-Site Scripting 2 and Cross-Site Request Forgery as early in the software development lifecycle. Finding these vulnerabilities in the early stages of the SDLC saves major time and remediation efforts and expenses than if a flaw were found towards the end of the cycle.
+Because it analyzes the entire codebase, Static Application Security Testing is a comprehensive solution for helping secure applications from the root up. Organizations in industries requiring compliance, including regulations and standards such as PCI, MITRE and HIPAA, go to great lengths to ensure the business is up to code. But as the reality has emerged that the application layer has become the primary attack zone in so many data breaches, application security, and SAST in particular is widely recognized as an essential method in achieving compliance.
+
+Source Code Analysis scans un-compiled code, enabling auditors and developers to receive immediate, accurate feedback on their code. Other methods of Application Security Testing, including Dynamic Application Security Testing (DAST) struggle to adequately identify crucial problems within the application layer nor indicate how or where to fix them.
+By exposing the applications code properties and code flows, Source Code Analysis offers comprehensive insight into vulnerable patterns and coding flaws. The ability to remediate issues as they arise makes source code analysis ideal for integration within the Software Development Lifecycle (SDLC).
+It is the only security testing method “designed to detect security vulnerabilities and gaps at the development stage and have them fixed before the system is implemented,” (Monetary Authority of Singapore).
+                                                                 
+                                                                 [  Introduction to the AppSecKnowledgebase ]
+
+Cybercrime – Affecting Organizations Worldwide
+
+With more and more organizations offering their services via online channels, cybercrime has picked up significantly. Banking, e-commerce, retail, health, defense, government, transportation and other websites have given hackers (and commercial attackers) a large choice of potential targets to exploit. According to American research and analysis firm Juniper Research, cybercrime will cost businesses around $2.1 trillion by the year 2019.
+High-profile hacks and POCs of security breaches are piling up. One of the most “sensational” hacks of 2015 involved the dating website Ashley Madison, where hackers harvested sensitive data 2 of over 37 million users. Also, researcher Wesley Weinberg exposed a Remote Code Execution bug in the Instagram application in late 2015. Even FBI’s portal was not spared, with hackers gaining access to CIA director John Brennan’s email account.
+But it’s not all bad news. The forecasted numbers can be brought down significantly if web and mobile applications are developed securely to have better code integrity.
+
+How to Approach Application Security?
+Application security has changed over the years. While initially dominated by Penetration (Pen) Testing and Manual Code Reviews, the evolution of programming has forced this industry to become more advanced. There are different ways to approach application security today. Security experts recommend adopting a multi-layered approach to make sure that the applications are as robust as possible prior to release. But as mentioned earlier, picking the right solution/s is crucial to optimize security performance.
+
+
+
+                                                                    [  SAST vs Penetration Testing ]
+
+Why SAST?
+
+Better ROI since Penetration Testing can’t work till the app is up and running. Has a higher detection rate. Pen Testing needs many cycles. Offers faster scan results and non-dependent on the human factor. Requires less manpower and resources to analyze results. Doubles as a QA solution and locates dead code / logic errors.
+Why Pen Testing? Might have lesser False Positives (FP) since it mimics real-time scenarios. Can be outsourced to external companies as per the requirements.
+
+OWASP and OWASP Top 10
+
+The Open Web Application Security Project (OWASP) is an open-source appsec community. Its goal is to increase application security awareness. OWASP is the source behind the industry standard OWASP Top 10.
+More and more companies from various industrial sectors are embracing this vulnerability list, which consistently encompasses today’s most critical security flaws. OWASP Top 10 2013 and OWASP Mobile Top 10 2014 are created and updated by AppSec experts from around the world, something that has helped create a unique AppSec community.
+Besides offering the aforementioned cross-sector reference lists that help organizations secure their applications, OWASP is also widely acknowledged for its other contributions around the world (conferences, hackathons, lectures and more) to the field of application security. It even won the SC Magazine Editor’s Choice Award in 2014.
+
+                                                                  [ THE OWASP TOP 10 VULNERABILITIES ] 
+
+SQL Injection Attacks
+SQL Injections are at the head of the OWASP Top 10, and occur when a database or other areas of the web app where inputs aren’t properly santized, allowing malicious or untrusted data into the system to cause harm. SQL injection attacks are simply when data is sent to any form of code interpreter that can be run as a command or in the case of a database – a query. The idea is that the data fools the interpreter into either handing over data that the attacker wants or it executes commands that may be hostile in the environment. More about SQLi:
+Knowledge Base: SQL Injection
+
+SQL Injection Tutorial
+
+Broken Authentication & Session Management
+Broken Authentication and Session Management vulnerabilities allow anonymous attacks aimed at attempting to steal valuable data, especially Personally Identifiable Information. If authentication or session management protocols have not been implemented properly, they may enable a hostile to steal passwords, session keys or tokens or otherwise assume or exploit a user’s identity.
+
+                                                [ Cross Site Scripting (XSS) Cheat Sheet, Attack Examples & Protection ] 
+Cross-Site Scripting, often shortened as XSS, attempts to trick a browser into accepting data that isn’t from a trusted source. Applications that allow user input but don’t have control over output are highly vulnerable to XSS. If successful, XSS allows the attacker to take over a user session, cause damage to a website or force the user to visit another site (often a website hosting further hostile code). There are three different kinds of XSS attacks, referred to as Stored XSS, DOM Based XSS, and Reflected XSS.
+The XSS vulnerability has been starring regularly in the OWASP Top-10 1 for years. More and more web applications and websites today are found to be vulnerable to Cross-Site Scripting (XSS) vulnerability. XSS takes advantage of both client and server side programming.
+
+XSS payloads cause the victim’s browser into executing dangerous commands, eventually leading to cookie theft and data manipulation.
+
+What is XSS?
+
+XSS attacks are typically planned and executed following way:
+
+The first step is locating XSS vulnerabilities within web applications. This can be performed with the help of proprietary tools available online.
+Next, the malicious attacker creates a XSS payload to exploit the vulnerability. Advanced hackers can also disguise the malware with HEX encoding, making it harder to locate and detect.
+The final stage involves the implementation of social engineering and various phishing techniques to trick users into clicking on the tainted links that initiate the attack sequence.
+For example, let’s take a look at a trusted interactive website like Amazon. It’s very easy for the attacker to plant malicious code in the product feedback section of the web application. Once the unsuspecting user clicks on the malicious element, his browser executes the URL and causes extensive damage to the compromised computer.
+
+What types of XSS attacks exist?
+
+There are four main XSS methodologies in use today:
+
+Stored (Persistent) Cross-site Scripting
+
+Also referred to as Type-I XSS, Stored XSS involves the planting of the attack payloads into vulnerable servers. Clicking on a malicious link (URL) planted in a trusted web application initiates the hacking. These URLs are commonly found in various well-known and trusted websites that feature newsgroups, forums, talkback boards and discussion threads.
+
+Reflected (Non-Persistent) Cross-site Scripting
+
+The most commonly found XSS, also known as Type-II, occurs when the server reads data directly from the HTTP request and reflects it back in the response. The JavaScript is usually HEX Encoded to disguise the real intent of the attacker.
+
+Web applications that don’t sanitize user input (i.e – URLs) are easy targets for the attackers. The victim’s browser executes the malicious URL as it assumes that it’s coming from a “trusted website”, which in fact is vulnerable to Cross-Site Scripting.
+
+Example 1
+
+index.php: <?php* *$user_name = $_GET['name'];* *echo "Welcome $user_name
+";* *echo "* *Click for more info 11";* *?>
+
+Now the attacker can craft a URL in the following format and send it to the victim:
+
+http://www.test-attack.com/index.php?name=myuser 16
+When the victim loads the URL shown above into the browser, he will see an alert box with the text ‘hacked’. Even though this specific example doesn’t cause any damage besides the annoying ‘hacked’ pop-up, it’s clear how an attacker can use this simple and straightforward method to exploit websites and applications.
+
+Example 2
+
+Consider a website that has URLs of the following type:
+
+http://www.yoursite.com/index.html?name=Alex
+
+Let us say the parameter “name” is used to define name values for the user. The website uses this value to say “Hello Alex” on the webpage. In this example, a malicious hacker can exploit the parameter “name” by attaching malicious code to the parameter “name”:
+
+http://www.yoursite.com/index.html?name= 5
+
+This specific shows a message box to the user displaying the words ‘XSS vulnerability’, but in reality, actual malware code could have been loaded via this exploit on a website.
+
+This attack succeeds because the web application that analyzes this URL and the website incorrectly trusts the user to always input safe data. It is not prepared for these threats. In this case, the attacker has used a benign website to launch a malware attack on an unsuspecting user, and the website owner usually has no idea that his or her website was exploited.
+Client Side / DOM Based XSS
+Also known as Type-0 XSS, this XSS methodology basically manipulates the Document Object Model environment in the victim’s browser. Once infected by the XSS payload, which can simply modify a JavaScript element, one or more DOM features are compromised and are manipulated by the hacker.
+For example, the following code has been written to create a form that enables the user to pick his preferred language. There is also a provision for a default language in the query string, appearing as the parameter “default”.
+
+Select your language:
+Assuming a web page is invoked with a URL such as: http://www.some.site/page.html?default=French 1
+
+A DOM Based XSS attack against this page can be launched by sending this URL to a victim:
+
+http://www.some.site/page.html?default=<script>// <![CDATA[
+alert(document.cookie)
+// ]]<</script>
+When the URL is clicked, the browser sends a request for:
+
+/page.html?default=<script<alert(document.cookie)
+
+The server responds with the page containing the JavaScript code. The browser creates a DOM object for the page, in which the “document.location” object contains the string:
+
+http://www.some.site/page.html?default=<script>// <![CDATA[
+alert(document.cookie)
+// ]]></script>
+The original JavaScript code in the page does not expect the default parameter to contain HTML markup and it is echoed into the page DOM at runtime. The browser then executes the malicious script after rendering the resulting page.
+
+alert(document.cookie)
+The attack manifests itself at the client-side script at runtime after the flawed script accesses the DOM variable document.location and assumes it’s not malicious.
+
+POST Method XSS
+These attacks use HTTP POST variables, which are not sent along with the URL. These XSS attacks require the creation of a go-between payload page where the victim is re-directed after clicking on the malicious link. The victim’s browser then is manipulated by the jump-code into sending the malicious POST request to the vulnerable application.
+
+What are the dangers of XSS?
+XSS attacks can cause various levels of damage to web applications. This depends on the type of script delivered by the hackers. The most commonly found after-effects of XSS involve:
+Identity theft
+Session hijacking
+Social engineering
+Harvesting sensitive information saved in JavaScript variables
+Re-directing traffic by altering URLs
+Recording of keystrokes and input for commercial or criminal purposes
+Fetching GPS/Camera data if the access has been granted by the website
+Launching attacks on systems connected to the exploited computer
+Probing and sniffing entire networks where the victim is located
+
+How to prevent XSS attacks?
+The following steps can be taken to steer clear of XSS threats:
+Never insert untrusted data except in allowed locations.
+HTML escape before inserting data into HTML element content.
+Attribute escape before inserting untrusted data into HTML common attributes.
+JavaScript escape before inserting untrusted data into JavaScript data values.
+CSS escape and strictly validate before inserting untrusted data into HTML style property values (while trying to insert untrusted data into stylesheets or style tags).
+URL escape before inserting untrusted data into HTML URL parameter values.
+Sanitize HTML markup with a library designed for the job (HTML Sanitizer)
+Prevent DOM-based XSS vulnerabilities
+
+Preventing XSS attacks with CxSAST
+The Checkmarx static code analysis solution basically searches for data flows (user input) that gets outputted to the browser without being properly validated or sanitized. Once these are located, all the developer has to do is to take care of the vulnerable LOCs that are pinpointed by CxSAST.
+
+Insecure Direct Object ReferencesInsecure Direct Object References occur when authentication isn’t properly executed. If an application is vulnerable, malicious users may be able to gain administrative access to the application. If no access control check or other protection is in place, an attacker could manipulate that type of reference to access data they’re not authorized for.
+Security MisconfigurationWhen security processes and practices aren’t correctly followed or implemented, Security Misconfigurations can easily be used by attackers to detect weak areas that would allow them to access privileged data. Configuration of the whole application environment including servers, platforms, etc. needs to be properly defined, implemented and controlled or it can lead to security holes.
+Sensitive Data ExposureWhen security controls like SSL and HTTPS are not properly implemented, data can be leaked or stolen through a Sensitive Data Exposure vulnerability. Sensitive data such as Personally Identifiable Information, including financial and banking details, tax IDs, and passwords can be at risk if not correctly secured. Applications should ensure that they authenticate access, encrypt data and ensure the integrity of data in the transport layer. A failure to do so may allow for weak (and exploitable) algorithms and might allow access from expired or forged certificates, leading to a privacy violation.
+Missing Function Level Access Control This risk is posed when web applications don’t correctly verify function level access rights before making available functionality that shouldn’t be granted.
+Using Components with Known Vulnerabilities Components, especially libraries and frameworks derived from the open source community, should never be used when there are known vulnerabilities in the code. Doing so undermines the application and possibly the entire organization, as an attacker could easily leverage an SQL injection, XSS attack or similar to attempt an application takeover.
+Unvalidated Redirects and ForwardsUnvalidated Redirects and Forwards can be used with a bit of social engineering to mimic an already existing site and trick visitors into downloading malware or giving up Personally Identifiable Information.
+
+                                                      [ Cross-Site Request Forgery (CSRF) Cheat Sheet, Attack Examples & Protection ]
+                                                      
+Cross Site Request Forgery Attacks (CSRF)Cross-Site Request Forgery attacks, often shortened to CSRF, allow the attacker to forge an HTTP request from the victim, and may include data such as cookies or authentication information. The victim’s browser may then be used to generate additional requests that appear legitimate to the object of the attack. 
+Cross-Site Request Forgery (CSRF), also known as Session Riding and XSRF , is a common application-layer vulnerability that allows the malicious attacker to use an active session of the victim to perform actions on his behalf without his prior knowledge or consent. CSRF incidents are hard to detect as they are disguised into normal user requests.
+A regular starrer in the OWASP Top-10, CSRF attacks are fast gaining popularity in hacking circles. As per the Seperfecta (The top-4 types of cyberattacks executed today – SQL Injection, Cross-site Scripting, Directory Traversal and Cross-site Request Forgery) report released by FireHost, CSRF attacks almost doubled from Q1 of 2012 to the Q1 of 2013.
+
+What is a CSRF attack?
+CSRF attacks manipulate the inability of the web applications to authenticate user access. These attacks typically take shape in the following manner:
+
+The victim first logs on to the CSRF vulnerable web application, which then initiates the session and creates a unique ID for him. He is then free to interact with the server and perform data modifying tasks.
+The hacker uses social engineering techniques 2 (unsolicited emails with HTML content, malware planted on popular webpages, etc) to make the victim click on malicious URLs containing legal commands for the targeted web application.
+Once the malicious URL is clicked, the web application assumes the commands are coming from the victim and performs them.
+How do CSRF attacks look in real life?
+
+As mentioned above, CSRF attacks can be executed exclusively or in tandem with other techniques. But they are most commonly initiated with the help of social engineering.
+Web applications enable changes to their databases when they receive commands from the browsers, also called “task URLs”. Once a server is contacted, the user gets a unique session ID. This session ID enables the web application to recognize the input source. It then allows access to its databases. CSRF attacks manipulate this very authentication system.
+Malicious attackers create contaminated “task URLs” and push them out using various social engineering techniques. Once clicked, the victim’s browser generates unauthorized requests while riding on the same session ID acquired earlier.
+
+CSRF attack examples
+
+The victim enters his banking web application ( www.mybank.com ) and initiates a session. He is given a unique session ID and the interaction with the server is launched.
+The malicious attacker creates a URL with a CSRF payload with the intent of stealing $1000 from the victim’s bank account. This malicious URL is pushed to the victim via the various social engineering techniques. The contaminated URL can look like:
+
+<iframe src=" http://mybank.com/app/transferAmount?amount=1000& destinationAccount = … >
+The loading of the iframe sends the request to mybank.com 1 , while riding the session the victim is already logged on to. The stolen $1000 is sent to the account specified by the hacker.
+
+The risks of CSRF attacks
+
+Impersonation and identity riding.
+Modification of application data with the victim’s credentials and permissions.
+Posting content on behalf of the victim without his consent or prior knowledge.
+Launching of organized attacks against all of the application’s users.
+Exploitation of vulnerable DSL routers.
+Besides the aforementioned dangers the CSRF vulnerability, it can also help initiate other types of attacks. For example, a Cross-Site Scripting (XSS) initiated CSRF attack is a potent hacking method that can cause colossal damage to organizations and private users alike.
+
+How to prevent CSRF attacks?
+Besides using the Checkmarx solution that provides a comprehensive solution, security officers and developers must make a habit of taking the following security measures:
+
+Unique CSRF tokens – The user should get a random CSRF token every time he logs into the web application. In all subsequent requests, this token should be passed and validated in the server. This effectively cripples the malicious URLs as they cannot be authenticated by the server, which checks for the unique CSRF tokens.
+Tokens per request – The aforementioned CSRF tokens are usually given out per session, but can be given out for each request separately for added protection.
+Timing out sessions – Making sure the session times out after a short period of time reduces the time-frame that the victim has to perform the attack.
+Preventing CSRF attacks with CxSAST. It helps eradicate CSRF vulnerabilities by scanning the source code and identifying sensitive junctions where the application can be compromised. All the developer has to do is insert appropriate anti-CSRF solutions in the vulnerable junctions located by Checkmarx’s scanner. CxSAST 3 comes with built-in CSRF queries for out-of-the-box CSRF detection.
+
+                                                              [ Java Security Vulnerabilities and Language Overview ]
+James Gosling, the creator of Java - While Java was ahead of the curve when it came to interactive television, it emerged at the same time as the internet was beginning to take off and was a perfect match for this emerging technology. In 1995 it was announced that the Netscape Navigator internet browser would incorporate Java technology and since then major web browsers have incorporated the ability to run Java applets.
+As with most coding languages, the development of Java was guided by a number of principals which influenced Java’s creation and continued development:
+
+It must be “simple, object-oriented, and familiar”.
+It must be “robust and secure”.
+It must be “architecture-neutral and portable”.
+It must execute with “high performance”.
+It must be “interpreted, threaded, and dynamic”.
+
+[ Major Java Frameworks and their Security Threats:]
+
+Struts
+Struts is a free,action-based open-source, Model–view–controller (MVC) framework used to develop Java EE web applications. Released in May 2000, Struts was written by Craig McClanahan and donated to the Apache Foundation, the main goal behind Struts is the separation of the model (application logic that interacts with a database) from the view (HTML pages presented to the client) and the controller (instance that passes information between view and model).
+A major security concern facing applications built using Struts is remote code execution. In 2010, Struts2, a popular Struts framework was downloaded over 1 million times in 2010 by over 18,000 organizations and included a unique class of weakness which allowed
+Malicious parties to execute arbitrary code on any Struts2 web application.
+
+Spring MVC
+Spring MVC is a Spring application framework written by Spring developers as a response to what they saw as design flaws in other popular frameworks such as insufficient separation 4 between the presentation and request handling layers, and between the request handling layer and the model. Like Struts, Spring MVC is also an action-based framework. In 2011, Spring MVC, along with Struts, was considered one of the most downloaded vulnerable libraries due to CVE-2012-3451 3, this version had been downloaded over 18 million times between 2011-2012 by over 43,000 organizations
+
+Google Web Toolkit (GWT)
+As an open source set of tools which allow developers to create and maintain complex JavaScript front-end apps in Java, Google Web Toolkit (GWT) is free and used by both Google and thousands of developers across the globe. GWT was designed to enable the productive development high-performance web applications without the coder needing to have an advanced knowledge of browser quirks, XMLHttpRequest, and JavaScript. Due to the fact that GWT produces JavaScript code, GWT applications need to be secured against all threats facing JavaScript applications.
+
+Hibernate
+Hibernate ORM, 2 known as simply Hibernate, is an object-relational mapping framework for the Java language. Designed for mapping Java classes to database tables and mapping from Java data types to SQL data types. Applications containing Hibernate can be threatened by SQL injections if if SQL, or HQL, queries are generated by concatenating strings. One way to protect against these is by using named parameters in any SQL or HQL.
+
+OWASP ESAPI
+OWASP ESAPI, the OWASP Enterprise Security API 9, is a free, open source, web application security control library which makes it simpler for developers to write lower-risk applications while the ESAPI libraries are designed to make it easier for programmers to retroactively add security into existing applications.
+
+Java Server Faces (JSF)
+Formalized as a standard through the Java Community Process, Java Server Faces (JSF) is a Java specification for building component-based user interfaces for web applications. According to OWASP “JSF does not implement its own security model but instead relies on standard JEE security. This means that both application server security model, JAAS or other ACL implementations can be used with the JSF framework without any integration effort.” A security concern for applications which implement JSF is Access Control and Authorization issues.
+
+JSP
+JavaServer Pages (JSP) is built on top of Servlet API and allows for the embedding of Java code which is compiled and then executed when a request is received. A common threat to JSP code is cross-site scripting (XSS).
+
+Java Security Vulnerabilities
+While the Java platform includes numerous features designed to improve the security of Java applications, it’s critical for developers to ensure that their Java code is vulnerability free at the earliest stages of the software development life cycle. Avoiding Java security mistakes 19 such as not restricting access to classes and variables, not finalizing classes, relying on package scoop and others is the best place to start when securing Java code, it’s also important for developers to familiarize themselves with the common security threats facing Java code, as well as Java frameworks. For more information on securing Java code during development, read 9 Security mistakes every Java Developer must avoid here 19.
+
+High-Risk Java Security Vulnerabilities:
+With over 95% of all enterprise desktops in the world running Java, there are serious consequences when vulnerabilities 11 in Java code make it to production and are exploited by malicious parties. The following is a list of some of the high risk threats facing applications written in Java:
+
+Code Injections
+Command Injections
+Connection String Injection
+LDAP Injection
+Reflected XSS
+Resource Injection
+Second Order SQL Injection
+SQL Injection
+Stored XSS
+XPath Injection
+Securing your Java
+
+Checkmarx’s CxSAST, a static code analysis solution 26, stands out amongst Java testing solutions as not only the solution which will keep your Java code free from security and compliance issues, but also as the tool which will contribute to your organization’s advancement when it comes to application security maturity.
+CxSAST works with the tools your developers are already using as it seamlessly integrates with most of the common development programs available at every stage of the SDLC. CxSAST’s features such as incremental code scanning and the best fix location made it ideal for any continuous integration continuous development (CICD) environment.
+When vulnerabilities are detected in the Java code, CxSAST will not only identify the best fix location, but will also offer resources to the developer to understand how the attack vector work as well as remediation advice which will help them ensure similar mistakes are avoided in the future.
+Want to learn more about Java vulnerabilities, why they happen, and how to eliminate them?
+
+
+                                                                  [  JavaScript Overview and Vulnerabilities  ]
+
+Brief History of JavaScript:
+What are some of the most common JavaScript vulnerabilities? Where and why was JavaScript created? Which frameworks are supported by Checkmarx? Read on to find the answers to these and more.
+
+
+When was JavaScript created?
+JavaScript (JS) was developed in just 10 days by Netscape Communications Corporation programmer Brendan Eich who went on to co-found the Mozilla Project. When it first shipped in September 1995 in Netscape Navigator, JavaScript was known as LiveScript and it was originally developed under the name Mocha. The name change from LiveScript to JavaScript came at the same time as Netscape’s adoption of Java support in its browser and, despite the confusion, the name change to JavaScript worked as a marketing tactic to capitalize on the hot programming language of the time, Java despite the fact that JavaScript has almost nothing to do with Java.
+
+
+Why was JavaScript created?
+JavaScript was created when Netscape decided that two languages were needed for their browser, rather than just Java. Eich explained that Java was seen as a “component language” used by higher priced programmers and that he wanted to create a “glue language” for Web designers and casual programmers, or “weekend-warriors,” who were building Web content (images, Java applets, plugins).
+As a “glue language,” programmers would use JavaScript to assemble components and automate their interactions. JavaScript is found inside of HTML documents and enables interactions with web pages in ways that are not possible through regular HTML. JavaScript allows us to zoom in and out of maps, play online games and automatically schedule appointments.
+In 2016, 88.1% of all websites use JavaScript including Facebook, Youtube, Google and Wikipedia and thanks to JavaScript elements that are often taken for granted–real-time notifications for likes, comments, etc.– are loaded without having to reload the web page.
+
+
+JavaScript Vulnerabilities:
+Hackers use JavaScript exploitation tools to attack websites, organizations and individuals. JavaScript vulnerabilities can be both client-side problems and enterprise nightmares as hackers are able to steal server-side data and infect users with malware.
+
+Cross-Site Scripting (XSS) Attacks
+The most common application vulnerability exploit in web applications is cross-site scripting (XSS) 4. Through the manipulation of JavaScript and HTML scripts, hackers execute malicious scripts (also known as “malicious payloads”) using an unsuspecting user’s web browser which can result in the script being embedded in the web page they are visiting. Every time that user visits the web page, or a predefined action is performed, the malicious script is triggered and executed.
+XSS attacks have the potential to cause serious threats to companies and enterprise accounts which can result in identity theft and data theft. By executing XSS attacks, hackers are able to inject and spread viruses and worms throughout the company’s network, access clipboard data and browsing histories and even gain remote control of the browser which helps them search for and identify other possible vulnerabilities which can be used for further XSS attacks.
+Due to JavaScript’s presence in almost every element of the web browsing experience, applications written using JavaScript are the most common victims for XSS attacks.
+
+Cross-Site Request Forgery
+Cross-Site Request Forgery (CSRF) 3 is a form of exploit that occurs when unauthorized commands, which would be normally rejected, which results in the website being tricked to believe that the malicious user is an authorized user via a forged authorization. Upon a successful exploit of this vulnerability, the hacker is able to access functions of the web application that would normally be denied.
+Risks associated with CSRF attacks include impersonation and identity riding, modification of application data using the victim’s credentials and permissions, launching organized attacks against all of the application’s users, exploitation of vulnerable DSL routers and more.
+CSRF is often pronounced “sea-surf” and is alternatively abbreviated as XSRF.
+
+                                                        [ JavaScript Frameworks Supported by Checkmarx ]
+
+Node.js
+While not a JavaScript framework itself, a majority of Node.js modules are written in JavaScript and developers are able to add and write new modules in JavaScript. Node.js has an event-driven architecture that is used in many popular real-time web applications which include communication tools and in-browser games and is the most leading cross-platform runtime environment for server side applications written in JavaScript. Trusted by some of the biggest names on the web, including GoDaddy, Groupon, IBM, Netflix, etc., Node.js can also utilize code written in Edge.js, Lua, Julia and COBOL.
+Vulnerabilities associated with Node.js include application layer DDoS, attacks which can bring servers to their knees, brute-force attacks and business logic attacks.
+
+JQuery
+JQuery, the most popular JavaScript library, is a cross-platform library designed to simplify the client-side scripting of HTML and can be found on 65% of the top 10 million most visited websites. The advantages of using JQuery include the fact that it encourages the separation of JavaScript and HTML, that it promotes brevity and clarity, the elimination of cross-browser incompatibilities and the fact that it is extensible as new events, elements and methods can be easily added and subsequently reused.
+JQuery security vulnerabilities include cross site scripting (XSS) as well as “JavaScript Hijacking.”
+
+Ajax
+Ajax, which first appeared in 2005, is short for “asynchronous JavaScript and XML.” Ajax allows web applications to send and retrieve data from a server in the background without disturbing the appearance and actions of an existing page. Ajax, however, does have its drawbacks which include the inability to use pages that are dependant on Ajax if a browser does not support JavaScript and the fact that asynchronous callback-style of programming can be hard to maintain, test and debug.
+
+knockout.js
+Knockout is a standalone JavaScript implementation authored by Steve Sanderson, a Microsoft employee, was released in 2010 and is based on the underlying principles of:
+-A clear separation between domain data, view components and data to be displayed
+-The presence of a clearly defined layer of specialized code to manage the relationships between the view components
+
+Knockout’s features include declarative bindings, automatic UI refresh, dependency tracking and templating. Knockout is an, “attacker’s best friend” because of the way it allows to execute arbitrary JavaScript by injecting into HTML5 data attributes. To read more about the Knockout specific injection attacks, click here.
+
+Angular.JS
+AngularJS is an open-source web application framework that was released in 2010 and is maintained by Google and a community of individuals and companies. Created based on the belief that declarative programming should be used to create user interfaces and connect software components. AngularJS is much more lightweight that a typical framework and as a result, many confuse it with a library.
+Developers do need to worry about security holes in AngularJS which include injections, broken authentication and session management, cross-site scripting (XSS), insecure direct object references, security misconfigurations and more.
+
+ExpressJSexpress 1
+Authored by TJ Holowaychuk, ExpressJS is the “most starred NodeJS related package on GitHub, and averages over a million downloads every week.” In June 2014, AngularJS rights were acquired by Strongloop, which was subsequently acquired by IBM in 2015.
+
+Jadejade
+Released in 1996 by the New Zealand-based Jade Software Corporation, JADE is a, “proprietary object-oriented software development and deployment platform product.” JADE was developed in order to create a seamlessly integrated programming language to allow developers to create one application from end-to-end rather than having to write three different applications for the database server, application server, and presentation client in addition to the code needed for them to communicate with each other.
+
+Backbonebackbone 1
+Backbone.js gives structure to web applications by, “providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing API over a RESTful JSON interface.”
+Developed by Jeremy Ashkenas and released in 2010, a larger number of popular web applications, such as Airbnb, Drupal 8, LinkedIn and Pandora are built with Backbone.js.
+
+Handlebars
+Handlebars, developed by Yehuda Katz in 2010, is a semantic web template system and is a superset of Mustache that can render Mustache template as well as Handlebar template. Mustache templates can be swapped out with Handlebars in most cases.
+For a full list of all the programming languages supported by Checkmarx, click here 4.
+
+JavaScript Static Code Analysis
+Despite being used in the most popular websites that we frequent, JavaScript does, unfortunately, come with its own unique risks. Static code analysis is the best way to ensure that security vulnerabilities don’t make it into your code and that security is a top priority in every element of the software development life cycle.
+What makes Checkmarx the best solution for JavaScript static code analysis?
+
+-Simple customization of the scanning rules to deliver the exact reports you need
+-Choose which preset to apply to your code:
+-Adherence with a specific security standard
+-Compliance with PCI DSS
+-Enforcement of best coding practices
+-Create reports with all the information that you need which represent the findings
+
+Your development team will be able to focus on resolving any issues quickly when you quickly give them the exact information that they need which will result in fewer problems which are much easier to fix as a result of the pre-release testing.
+
+
+                                                                  [  C# Security Vulnerabilities and Language Overview  ]
+
+Anders Hejlsberg, the lead architect of C#
+In Stack Overflow’s 2016 Developer Survey, C# ranked as the fourth most popular technology with slightly over 30% of the respondents using it to development, a 0.7% decline from the 2015 results.
+In terms of what C# is not, the lead architect, Anders Hejlsberg, has responded to allegations of C# being a copy of Java by saying that C# is “not a Java clone” and is “much closer to C++” in its design.
+The name “C sharp” was inspired by the musical notation where “sharp” indicates that the note is a semitone higher in pitch, although the symbol for sharp (♯) is slightly different than the “pound sign” characters on most keyboards as the horizontal lines reach upwards.
+
+Why Was C# Initially Created?
+In early 1999, Anders Hejlsberg was working with a team at Microsoft on a new language which he referred to as COOL (C-like Object Oriented Language). When the .NET project was announced in July 2000, COOL had been renamed to C# and the class libraries and ASP.NET runtime had been ported to C# after being originally written in a managed code compiler system known as Simple Managed C (SMC) during the development of the .NET framework.
+
+The following C# Design Goals are were published in ECMA’s 4th Edition of their C# Language Specification which was released in June 2006.
+
+The C# language is intended to be a simple, modern, general-purpose, object-oriented programming language.The language, and implementations thereof, should provide support for software engineering principles such as strong type checking, array bounds checking, detection of attempts to use uninitialized variables, and automatic garbage collection. Software robustness, durability, and programmer productivity are important.
+The language is intended for use in developing software components suitable for deployment in distributed environments. Portability is very important for source code and programmers, especially those already familiar with C and C++. Support for internationalization is very important. C# is intended to be suitable for writing applications for both hosted and embedded systems, ranging from the very large that use sophisticated operating systems, down to the very small having dedicated functions.
+Although C# applications are intended to be economical with regard to memory and processing power requirements, the language was not intended to compete directly on performance and size with C or assembly language.
+Microsoft’s Developer Network 1 notes that in addition to basic object-oriented principles, C# accelerates software development through a number of forward-thinking language constructs including:
+
+Encapsulated method signatures called delegates, which enable type-safe event notifications.
+Properties, which serve as accessors for private member variables.
+Attributes, which provide declarative metadata about types at run time.
+Inline XML documentation comments.
+Language-Integrated Query (LINQ) which provides built-in query capabilities across a variety of data sources.
+
+Who uses C#?
+
+Of the 2.2 million feedback events left by the 40 million monthly visitors to Stack Overflow, C# projects received 41,624 feedback counts in January 2016. A trending list of C# projects on GitHub can be found here 2.
+As it was developed by Microsoft, C# can be found in nearly all their products and, thanks to the part it plays in the .NET framework, C# is often used in applications alongside ASP. C# is quite active in video game development by Windows and Xbox.
+C#’s flexibility as a language makes it great for a wide variety of applications and can be found in Unity apps, mobile apps (Xamarin), desktop apps and many more. Microsoft also notes that C# also interoperates with other languages across a diversity of platforms with legacy data, by virtue, with the following features:
+
+Full interoperability support through COM+ 1.0 and .NET Framework services with tight library-based access.
+XML support for wWeb-based component interaction.
+Versioning to provide ease of administration and deployment.
+C# Security Vulnerabilities
+
+[ High-Risk C# Security Vulnerabilities:
+
+Alongside SQL Injections (SQLi) 5, Command Injections and Cross Site Request Forgery 3, which affect most contemporary programming languages, C# applications also face threats from:
+LDAP Injections 22
+Command Injections 20
+XPath Injections 8
+Second Order SQL Injection
+
+Securing your C# Code
+Checkmarx’s CxSAST, a static code analysis solution 16, stands out amongst C# testing solutions as not only the solution which will keep your C# code free from security and compliance issues, but also as the tool which will contribute to your organization’s advancement when it comes to application security maturity.
+CxSAST works with the tools your developers are already using as it seamlessly integrates with most of the common development programs available at every stage of the SDLC. CxSAST’s features such as incremental code scanning and the best fix location made it ideal for any continuous integration continuous development (CICD) environment.
+When vulnerabilities are detected in the C# code, CxSAST will not only identify the best fix location, but will also offer resources to the developer to understand how the attack vector work as well as remediation advice which will help them ensure similar mistakes are avoided in the future.
+
+                                                                   [  Top AppSec Gurus on Twitter  ]
+
+Staying on top of the latest developments and innovation in application security is key. The following list of thought leaders is an excellent source of information that will help you implement a successful application security program.
+
+Troy Hunt @TroyHunt 1
+Sydney-based software architect, web security specialist and Microsoft MVP 4 years running.
+
+Dan Cornell @danielcornell 
+AppSec expert with over 12 years of experience in developing and architecting secure software.
+
+Rafay Baloch @rafaybaloch 1
+Award winning AppSec expert and ethical hacker who specializes in Android and Chrome vulnerabilities.
+
+Mark Dowd @Mdowd 
+AppSec researcher and pioneer. Co-written “The Art of Software Security Assessment”.
+
+Aloria @Aloria 
+A security engineer, adjunct InfoSec professor and creator/curator of the hilarious @sec_reactions
+
+Avram Marius @securityshell 
+Has found vulnerabilities that have earned him credit from Google, Facebook, Twitter and many others.
+
+Dan Goodin @dangoodin001 
+Ars Technica has an excellent security section on their site, and that’s thanks in great part to Dan Goodin.
+
+Parisa Tabriz @laparisa 
+Once a “part-time hacker”, Parisa now manages the Google Chrome security engineering team.
+
+Robin Wood @DigiNinja 
+A security auditor specializing in web apps and Wi-Fi. Follow Robin for witty security musings and research.
+
+Michael Zalewski @Icamtuf 
+Michael is on the Google Security Team, has been in the industry for over 20 years.
+
+Graham Cluley @GCluley 
+An AppSec blogger since the early 90s, he now has his own blog and covers all the hot issues.
+
+Mohit Kumar @unix_root 
+A security researcher and the editor-in-chief of The Hacker News, which he founded in 2010.
+
+Malik Mesellem @MME_IT 
+An ethical hacker who also offers security training and education to help promote AppSec awareness.
+
+Ashar Javed @soaj1664ashar 1
+A web app sec researcher who found bugs in Google, Microsoft, Twitter, eBay and many more.
+
+Michael Coates @_mwc 
+Chairman of the Board at OWASP’s and an ex-Mozilla Director of Security Assurance.
+
+Rich Mogull @rmogull 
+A security analyst and CEO at Securosis and contributor to Dark Reading and TidBITS.
+
+Mark Goodwin @mr_goodwin 
+Mark works on application security for Mozilla and spends his free time as the OWASP East Midlands.
+
+Pierluigi Paganini @SecurityAffairs 
+Ethical hacker, editor-in-chief of Cyber Defense Magazine and a member of ENISA.
+
+Maty Siman
+Checkmarx CTO and Chief Researcher Maty Siman @Maty_Siman
+
+                                                                [   AppSec Blogs to Learn From   ]
+
+Krebs on Security
+A Washington Post investigative reporter turned independent cybersecurity journalist, Brian Krebs regularly blows the covers off security breaches and schemes. His blog is an intriguing mix of posts on tips he’s received and security news we need to know.
+
+Troy Hunt
+He’s a Microsoft MVP for Developer Security, so you can be sure it gets technical on Troy’s blog. Troy also runs “Have I been pwned“, which allows anyone to check if their email has been found in hundreds of stolen databases.
+
+Schneier on Security
+A household name in security and cryptography, Bruce’s blog covers the most relevant topics in the industry. If you’re not already one of the 250K+ readers and subscribers to his monthly newsletter, it’s time to get on board!
+
+Dark Reading
+A must-read for InfoSec professionals of all kinds, Information Week’s Dark Reading has cultivated a great staff and contributing staff writing detailed and thoughtful pieces on a variety of topics with the goal of “connecting the information security community.”
+
+Ars Technica Risk Assessment
+Ars Technica’s Risk Assessment is an invaluable news resource to keep us up to date. Led by Dan Goodin’s admirable way of writing about technical security topics for the ‘layman,’ this is another must-follow news site.
+
+The Hacker News 1
+A great resource for white-hats everywhere, The Hacker News offers news and tutorials in an array of InfoSec areas. With monthly readership in the millions, we guess we’re not the only ones who get value from The Hacker News!
+
+SC Magazine
+Providing cyber security professionals with the news they need to know, SC Magazine is another news site providing more than just bulletins. Their Data Breach Blog is a great addition to their main offering, as well!
+
+
+
+                                                                  [  Top Sites to Learn Hacking (Legally)  ] 
+ 1 – Bricks 1
+Bricks is a deliberately vulnerable web app built on PHP and using a MySQL database, where each “brick” contains a security vulnerability to be mitigated. The project provides a platform for learning and teaching AppSec as well as a way to test web app scanners. There are three types of ‘bricks’: login pages, file upload pages and content pages, each with different types of vulnerabilities, common for the area of the application.
+
+2 – bWAPP
+Buggy Web Application is “a free and open source deliberately insecure web application” created by Malik Messelem, @MME_IT. Vulnerabilities to keep an eye out for include over 100 common issues derived from the OWASP Top 10. bWAPP is built in PHP and uses MySQL. Download the project here. For more advanced users, bWAPP also offers what Malik calls a bee-box, a custom Linux VM that comes pre-installed with bWAPP. .
+
+3 – Damn Vulnerable iOS App (DVIA) 1
+The site was created with the help of @ethicalhack3r, Ryan Dewhurst, who has also given the open source SCA tool DevBug to the community. Built in PHP/MySQL, vulnerabilities to look out for in DVWA include everything from SQL injection and cross-site scripting to captcha bypassing and malicious file execution. Get started with DVWA here or through GitHub, and check out this YouTube video for help with installation.
+
+4 – Google Gruyere 2
+This ‘cheesy’ vulnerable site is full of holes and aimed for those just starting to learn application security. The goals of the labs are: learn how hackers find security vulnerabilities, learn how hackers exploit web applications and learn how to stop hackers from finding and exploiting vulnerabilities. Written in Python, Gruyere offers opportunities for both black box and white box testing so “hackers” have the chance to play on both sides of the fence.
+
+5 – iGOAT
+iGoat is a mobile environment built especially for iOS developers and based off the OWASP WebGoat project, which we’ll talk about later. Developers work through lessons while learning with iGoat, laid out with a short introduction to each vulnerability, a chance to exploit it to verify the issue’s presence, a short description of the remediation appropriate for the issue and the chance to fix the issue and “rebuild” the iGoat program.
+
+
+                                                                              [  The Game of Hacks  ]
+
+The Game of Hacks development was directed jointly by Checkmarx CTO Maty Siman and Asaph Schulman, VP of marketing. It’s based on the 2013 OWASP Top-10, one of the most comprehensive vulnerability references available today. In a nutshell, this is an interactive solution to promote secure coding practices and AppSec awareness amongst developers.
+Besides offering the obvious playing functionality, Game of Hacks is also an AppSec knowledge sharing platform. Developers specializing in a wide variety of coding and scripting languages such as Java, JavaScript, PHP, Ruby, C#, C++ and more can contribute to the game’s question database by posting their private vulnerable code examples.
+
+The game can be played at 3 levels:
+
+Beginner – Intended for newbies who want to learn about secure coding.
+Intermediate – A good starting point for InfoSec professionals and developers.
+Advanced – Best suited for ethical hackers and security professionals.
+Once inside the game, all the player needs to do is pick the desired level of play and get started. There is also a multiplayer option where the player can invite specific
+people to clash with him online. The game consists of 5 questions, with 1 minute allocated to answer each question. Correct answers and faster response times get the player more points.
+
+This interactive platform encourages secure coding by familiarizing the players/developers with the leading vulnerabilities that are commonly exploited by malicious attackers. These include SQL injections, Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF/XSRF), Path Traversal and other leading techniques that are wreaking havoc today.
+
+Game of Hacks can be played on desktop computers, tablets and mobile phones.
+
+https://www.gameofhacks.com
+
+
