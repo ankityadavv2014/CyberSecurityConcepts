@@ -61,11 +61,134 @@ Besides offering the aforementioned cross-sector reference lists that help organ
 
                                                                   [ THE OWASP TOP 10 VULNERABILITIES ] 
 
-SQL Injection Attacks
-SQL Injections are at the head of the OWASP Top 10, and occur when a database or other areas of the web app where inputs aren’t properly santized, allowing malicious or untrusted data into the system to cause harm. SQL injection attacks are simply when data is sent to any form of code interpreter that can be run as a command or in the case of a database – a query. The idea is that the data fools the interpreter into either handing over data that the attacker wants or it executes commands that may be hostile in the environment. More about SQLi:
-Knowledge Base: SQL Injection
+                                                          [ SQL Injection (SQLi) Cheat Sheet, Attack Examples & Protection ] 
+SQL Injections are at the head of the OWASP Top 10, and occur when a database or other areas of the web app where inputs aren’t properly santized, allowing malicious or untrusted data into the system to cause harm. SQL injection attacks are simply when data is sent to any form of code interpreter that can be run as a command or in the case of a database – a query. The idea is that the data fools the interpreter into either handing over data that the attacker wants or it executes commands that may be hostile in the environment.
+SQL Injection, sometimes shortened to SQLi, is perhaps the most commonly employed hacking technique today, constantly making headlines and appearing in vulnerability reports. These malicious injections have been regularly starring in the OWASP Top-10 lists for years and they took the first place in the 2013 OWASP Top-10.
 
-SQL Injection Tutorial
+Before diving into how to prevent SQLi, it’s very important to understand the origins of SQL. We are looking at a programming language designed especially for managing information and interacting with databases. SQL has been in constant use since the mid-80s, but has not quite adapted to the huge changes and advances in technology.
+
+A brief introduction to the SQL language:
+
+SQL can be broken down to major language elements – Queries, Clauses, Expressions, Predicates and Statements. For example, expressions produce scalar values or plain tables that consist of columns and rows of data. Most importantly, queries retrieve data based on specific criteria and are widely used in hacking procedures.
+
+The command most relevant to SQL Injections is “and 1=1”, which always returns a positive answer. This feature is almost always used while hacking into SQL databases. Apostrophes and Semicolons also are integral parts of the SQL grammar and feature extensively in SQLi exploitations.
+
+What is SQL injection?
+
+Generally speaking, SQLi are unsanitized user input vulnerabilities. The most common exploitation is in log-in fields of unprotected web and mobile applications. Since all modern applications (web and mobile) use centralized databases to deliver and render information, such hacking opportunities exist in virtually all leading e-commerce, social and financial websites and applications.
+
+SQLi are basically SQL commands that are maliciously injected into SQL statements via an unsanitized input field. This is how the hackers illegally communicate with the application’s database, harvesting sensitive information and assuming control of the application for their personal benefit.
+
+A brief SQLi example:
+
+Below is a sample website that demonstrates how an SQL Injection is used.
+
+SQL_inj
+SQL_inj
+873×161 26.1 KB
+This is a basic website with a text field and a button. The purpose of this search field is to look for books in the inventory. But the hacker can use this input field to gain access to the database with the use of SQL Injections. Advanced hackers can delete database entries and in extreme cases also cause the aforementioned website to crash.
+
+How is it done?
+
+The character “‘” is entered into the search field and pressing the button leads to an error page which displays more information than needed.
+
+This example showcases a badly and insecurely programmed application that is incapable of handling SQL Injections. Just a few illegal characters with a little sniffing around leads the hacker to this string: “‘ union select password from users;”. He can then implement this finding to harvest usernames and passwords from the database.
+
+This of course is just one basic way to exploit application databases. Data hacking and extraction can also be easily performed and automated with commonly available third party software such as SQL Ninja and SQL Map.
+
+SQL Injection Demonstration:
+
+What are the damages caused by SQL Injections?
+
+Stealing of usernames and passwords for commercial or criminal purposes.- Complete wiping out of content or defacing of website pages (i.e hacktivism).
+Silent spying and monitoring of information by competitors.
+Corruption of entire databases and deleting of backups.
+Obtaining the application’s admin credentials via an SQL injection can have serious consequences, including taking control of the server remotely, manipulation and exploiting of the applications already residing on the server and also the gaining of unauthorized access to other servers on the network.
+How do you ensure your code cannot be hacked with SQL Injections?
+
+In order to avoid SQL injections, it is imperative that any input the application receives is sanitized to validate that what the application is expecting to receive as input. For example, a book name should indeed be a book name and not a malicious SQL script.
+
+Most programming frameworks have input sanitization methods that should be used whenever possible. In addition, the following security steps should be taken to neutralize SQL injections:
+
+Validation should be based on a whitelist: accept only data fitting a specified structure, rather than reject bad patterns.
+Check for the following:
+– Data Type
+– Size
+– Range
+– Format
+– Expected values
+Instead of concatenating strings:
+– Use secure database components such as stored procedures, parameterized queries, and object bindings for commands
+– An even better solution is to use an ORM library, such as EntityFramework, Hibernate, or iBatis.
+Restrict access to database objects and functionality, according to the Principle of Least Privilege
+How to Prevent SQL injection attacks?
+
+Checkmarx’s Static Application Security Testing (SAST) solution automatically scans your application’s source code, mapping the data flow from the input to the sink. Flows that do not include a sanitation method are automatically flagged as potential SQL injection vulnerabilities.
+
+Sample code in SQL:
+
+select id, firstname, lastname from authors
+
+If one provided:
+
+Firstname: evil’ex Lastname: Newman
+
+The query string becomes:
+
+select id, firstname, lastname from authors where forename = ‘evil’ex’ and surname =‘newman’
+
+Which the database attempts to run as:
+
+Incorrect syntax near il’ as the database tried to execute evil.
+
+A safe version of the above SQL statement could be coded in Java as:
+
+String firstname = req.getParameter(“firstname”); String lastname = req.getParameter(“lastname”); // FIXME: do your own validation to detect attacks String query = “SELECT id, firstname, lastname FROM authors WHERE forename = ? and surname = ?”; PreparedStatement pstmt = connection.prepareStatement( query ); pstmt.setString( 1, firstname ); pstmt.setString( 2, lastname ); try { ResultSet results = pstmt.execute( ); }
+
+
+                                                        [ OS Command Injection Cheat Sheet, Attack Examples & Protection ]
+In Operating System (OS) command injection attack occurs when an attacker attempts to execute system level commands through a vulnerable web application. Applications are considered vulnerable to the OS command injections if they can be manipulated into executing unauthorized system commands via the web interface.
+
+What is OS Command injection?
+These high-impact attacks basically involve the injecting of malicious commands into valid commands. Meta-characters (&, |, //;) are usually used to merge commands and create malicious OS Command Injections.
+
+Just like SQL injections, OS Command injections can be either blind or error-based, with error-based ones being more severe due to their transparent and obvious nature.
+
+OS Command injection examples
+This example is a web application that intends to perform a DNS lookup of a user-supplied domain name. It is subject to the first variant of OS command injection.
+
+use CGI qw(:standard);
+$name = param('name');
+$nslookup = "/path/to/nslookup";
+print header;
+
+if (open($fh, "$nslookup $name|")) {
+  while (<$fh>) {
+    print escapeHTML($_);
+    print "<br>\n";
+  }
+  close($fh);
+}
+Suppose an attacker provides a domain name like this: cwe.mitre.org%20%3B%20/bin/ls%20-l
+
+The %3B sequence decodes to the “;” character, and the %20 decodes to a space. The open() statement would then process a string like this: /path/to/nslookup cwe.mitre.org ; /bin/ls -l
+
+As a result, the attacker executes the “/bin/ls -l” command and gets a list of all the files in the program’s working directory. To make matters worse, a more dangerous payload can be crafted to perform more severe malicious actions.
+This code didn’t validate or sanitize the user input before using it in the execute command. Hence the attacker was able to run the desired command on the server.
+
+How to prevent OS Command Injection attacks?
+Ideally, a developer should use existing APIs for their relevant programming languages.
+
+For example, while programming with Java, the developer should use the available Java API located at javax.mail.*. If no such available API exists, the developer should validate the input using Regex or a whitelist of accepted values. This is much better than using Runtime.exec() (see code below) to issue a ‘mail’ command.
+
+Class Win32 extends OS {
+    public void email (String subject, String body) throws Exception {
+        String cmd = "cmd.exe /c start \"\"\"" + formatMailto(subject, body) + "\"";
+        Runtime.getRuntime().exec(cmd);
+    }
+}
+When it’s not technically possible to remove the command execution, the best way to stay protected is to execute only static strings that do not include user input.
+
 
 Broken Authentication & Session Management
 Broken Authentication and Session Management vulnerabilities allow anonymous attacks aimed at attempting to steal valuable data, especially Personally Identifiable Information. If authentication or session management protocols have not been implemented properly, they may enable a hostile to steal passwords, session keys or tokens or otherwise assume or exploit a user’s identity.
@@ -227,6 +350,112 @@ Tokens per request – The aforementioned CSRF tokens are usually given out per 
 Timing out sessions – Making sure the session times out after a short period of time reduces the time-frame that the victim has to perform the attack.
 Preventing CSRF attacks with CxSAST. It helps eradicate CSRF vulnerabilities by scanning the source code and identifying sensitive junctions where the application can be compromised. All the developer has to do is insert appropriate anti-CSRF solutions in the vulnerable junctions located by Checkmarx’s scanner. CxSAST 3 comes with built-in CSRF queries for out-of-the-box CSRF detection.
 
+                                                [ Cross Frame Scripting (XFS) Cheat Sheet, Attack Examples & Protection ] 
+
+Cross-Frame Scripting (XFS), also known as iFrame Injections, are basically targeted browser-based phishing attacks. These must not be confused with Cross-Site Scripting (XSS) attacks, which also allow the execution of malicious JavaScript scripts. XFS works in a similar manner, but enables only the sniffing of user input for data harvesting.
+
+According to recent research by Singaporean security expert Wang Jing, over 99% of the About.com 3 topic links and domains are vulnerable to XFS and XSS attacks.
+
+What is Cross Frame Scripting (XFS)?
+
+Cross Frame Scripting attacks take place when the victim is tricked into accessing a malicious web page via his browser. The malicious attacker, who has control of this page, loads a third-party page in the HTML frame. A malicious JavaScript keylogger then records the victim’s keystrokes and sends them to the attacker’s server.
+
+XFS 3
+
+Cross-Frame Scripting attacks, also known as iFrame Injections, are more dangerous than the traditional phishing techniques because the iFrame used is completely identical to the target website used to trick the victim. While these attacks require the malicious attacker to exploit very specific browser bugs, their effectiveness is very high.
+
+XFS attack examples
+
+To exploit the IE bug which leaks keyboard events across framesets, an attacker may create and control a web page at evil.com 2, while including a visible frame displaying the login page for example.com 2 on it. The attacker can hide the frame’s borders and expand the frame to cover the entire page, so that it looks to the browser user like he or she is actually visiting example.com 2. The attacker registers some JavaScript in the main evil.com 2 page which listens for all key events on the page.
+
+Normally, this listener would be notified of events only from the main evil.com 2 page. But because of the browser bug, this listener is notified also of events from the framed example.com 2 page. So every key press the browser user makes in the example.com 2 frame, while trying to log into example.com 2, can be captured by the attacker, and reported back to evil.com 2:
+
+Cross Frame Scripting 11
+
+What are the damages caused by XFS Attacks?
+
+Possible damages of Cross Frame Scripting attacks can involve:
+
+Data and identity theft
+Gaining control of the victim’s computer remotely
+Installation of spyware on computers and networks for future sniffing
+Initiation of Denial of Service (DOS) attacks on other websites
+Using the visible frame to execute c 5lickjacking 5
+How to prevent XFS Attacks?
+
+There is not much the normal user (potential victim) can do to besides take the usual measures to avoid phishing attacks. These steps include:
+
+Avoiding malicious looking links and websites.
+Not letting the browser “remember” passwords and login links.
+Sacrificing performance for security by blocking all tracking cookies.
+Keeping personal information and dates in secure encrypted storage.
+Using strong passwords and changing them on a frequent basis.
+Frame Busting 9 is the main strategy developers can adopt in order to combat XFS attacks. Integration of this solution, which is basically JavaScript code, prevents the use of websites as malicious iFrame traps. The most common Frame Busting code is made up of 2 basic elements – a conditional statement and a counter action. It looks like this:
+
+if (top != self) {top.location = self.location;}
+
+Preventing XFS attacks with CxSAST
+
+CxSAST 7 detects and warns about all pages that can be displayed in an iFrame and do not contain XFS protection solutions in place.
+
+
+                                                             [ Path Traversal – Cheat Sheet, Attack Examples & Protection ] 
+                                                             
+What is Path Traversal?
+Path Traversal, also known as Directory Climbing and Directory Traversal, involves the exploitation of sensitive information stored insecurely on web servers. This vulnerability is constantly showing up in globally-recognized vulnerability references such as the SANS 25 Top 25 Most Dangerous Software Errors and OWASP Top-10 2.
+
+There are two primary security mechanisms available today in web servers:
+
+Access Control Lists (ACLs) – These are basically whitelists that the web server’s administrator uses to monitor access permissions. These lists are used in the authorization process. Only users with permissions can access, modify or share sensitive files and information.
+
+Root Directory – This directory is located in the server file system and users simply can’t access sensitive files above this root. One such example is the sensitive cmd.exe file on Windows platforms, which rests in the root directory that not everyone can access.
+
+Path Traversals are made possible when access to web content is not properly controlled and the web server is compromised. This is basically an HTTP exploit that gives malicious attackers unauthorized access to restricted directories. They are eventually able to manipulate the web server and execute malicious commands outside its root directory/folder.
+
+These attacks are usually executed with the help of injections such as Resource Injections, typically executed with the help of crawlers. The attack usually involves the following steps:
+
+The user/victim enters input into the application
+The user input is used to access a specific file (to read, write or send it)
+The attacker uses resource identifiers to manipulate the vulnerable application
+Parameters such as file names and port numbers are altered to initiate the attack
+The vulnerable application is basically tricked into granting access to the sensitive file/s even when the attacker doesn’t have the required permissions
+The attacker can then overwrite/modify files and even send them to third-party servers
+Path Traversal examples
+
+The following URLs show how the application deals with the resources in use:
+
+http://some_site.com.br/get-files.jsp?file=report.pdf
+http://some_site.com.br/get-page.php?home=aaa.html
+http://some_site.com.br/some-page.asp?page=index.html
+
+In these examples it may be possible to insert a malicious string as the variable parameter to access files located outside the web publish directory.
+
+http://some_site.com.br/get-files?file=…/…/…/…/some dir/some file
+http://some_site.com.br/…/…/…/…/some dir/some file
+
+The following URLs show examples of UNIX/Linux password file exploitation.
+
+http://some_site.com.br/…/…/…/…/etc/shadow
+http://some_site.com.br/get-files?file=/etc/passwd
+
+Important: In a windows system the malicious attacker can navigate only in a partition that locates web root while in the Linux he can navigate/access the whole disk.
+
+How to prevent Path Traversal attacks?
+
+Ways of mitigating the risk of Path Traversal include:
+
+Validate the user’s input. Accept only valid values (whitelist).
+Remove “…\” and “…/” from any input that’s used in a file context.
+Use indexes instead of actual portions of file names while using language files. (i.e – value 5 from the user submission = Indian, rather than expecting the user to return “Indian”).
+Implement strict code access policies to restrict where files can be saved to.
+Ensure the user cannot supply any part of the path to the file read or written to.
+UNIX system administrators are advised to use chrooted jails and code access policies to restrict where the files can be obtained or saved.
+Configure the default installation of the server software as per the requirements. The servers should also be maintained and patched with the latest updates.
+
+How to prevent Path Traversal attacks with CxSAST?
+CxSAST 4 detects data flows that are vulnerable to Path Traversal by following all user input that is used in a file creation or file reading context. If the input is not validated or sanitized (this being “…\” or “…/”) before being used, CxSAST determines this path as vulnerable to Path Traversal. The developers can then implement the aforementioned remediation techniques.
+                                                              
+                                                              
                                                               [ Java Security Vulnerabilities and Language Overview ]
 James Gosling, the creator of Java - While Java was ahead of the curve when it came to interactive television, it emerged at the same time as the internet was beginning to take off and was a perfect match for this emerging technology. In 1995 it was announced that the Netscape Navigator internet browser would incorporate Java technology and since then major web browsers have incorporated the ability to run Java applets.
 As with most coding languages, the development of Java was guided by a number of principals which influenced Java’s creation and continued development:
@@ -284,7 +513,68 @@ Checkmarx’s CxSAST, a static code analysis solution 26, stands out amongst Jav
 CxSAST works with the tools your developers are already using as it seamlessly integrates with most of the common development programs available at every stage of the SDLC. CxSAST’s features such as incremental code scanning and the best fix location made it ideal for any continuous integration continuous development (CICD) environment.
 When vulnerabilities are detected in the Java code, CxSAST will not only identify the best fix location, but will also offer resources to the developer to understand how the attack vector work as well as remediation advice which will help them ensure similar mistakes are avoided in the future.
 Want to learn more about Java vulnerabilities, why they happen, and how to eliminate them?
+          
+                                                      [ LDAP Injection Cheat Sheet, Attack Examples & Protection ] 
+ 
+Lightweight Directory Access Protocol (LDAP) is an open and vendor-neutral directory service protocol that runs on a layer above the TCP/IP stack. It provides the appropriate mechanism for the implementation of authentication and authorization controls, things that are commonly used while developing intranet and internet (web) applications.
 
+What is LDAP injection?
+
+LDAP servers store information that is accessed by clients using LDAP sessions (usually with pre-defined time-outs). The most basic actions that are taken once the session is initiated are the adding, deleting and modifying of entries. Other operations that are frequently executed include:
+
+Bind – to authenticate and specify LDAP the LDAP protocol version.
+Search – to locate and retrieve LDAP directory entries.
+Compare – to test if a names entry contains a given attribute value.
+Extended Operation – an operation used to define unique operations.
+Unbind – close the connection.
+LDAP
+
+As evident in the diagram above, LDAP injections are basically crafted queries. Under normal circumstances, normal queries to the LDAP server lead to normal output. But when the malicious attacker sends LDAP statements along with code injections, additional private and sensitive information can be stolen from the LDAP servers.
+
+Advanced LDAP injections can also allow the attacker to enable the execution of arbitrary commands to gain unauthorized permissions and even modify information within the LDAP tree. Besides these advanced injections, many techniques used in the SQL injection can also be implemented in the LDAP injection.
+
+LDAP injection examples
+
+In a page with a user search form, the following code is responsible to process user input value and generate a LDAP query that will be used in LDAP database.
+
+Insert the username
+
+The LDAP query is narrowed down for performance and the underlying code for this function might be the following:
+
+String ldapSearchQuery = “(cn=” + $userName + “)”; System.out.println(ldapSearchQuery);
+
+If the variable $userName is not validated, it could be possible to accomplish LDAP injection, as follows:
+
+If a user puts “*” on box search, the system may return all the user objects on the LDAP base.
+
+In a login form, for instance, the following vulnerable code could be used:
+
+searchlogin="(&(uid="+user+")(userPassword={MD5}"+base64(pack("H",md5(pass)))+"))";*
+
+If there is no input validation the user can insert the following injection in the user and pass fields:
+
+user = )(uid=))(|(uid= pass = password*
+
+The search filter would then return the first user in the LDAP tree and allow the attacker to bypass authentication:
+
+searchlogin="(&(uid=)(uid=))(|(uid=)(userPassword={MD5}X03MO1qnZdYdgyfeuILPmQ==))";*
+
+How to prevent LDAP injection attacks?
+
+LDAP flaws are basically application-layer vulnerabilities. This means that conventional security provisions like firewalls and intrusion detention tools are not effective in detecting LDAP injections. While minimum exposure points and “minimum privilege” principles are helpful, the real solutions to these issues include:
+
+Safe LDAP Configuration – This involves the safeguarding of sensitive information and data in the LDAP directory, especially while dealing with permissions on user objects. This is all the more important when the directory is used by the web/mobile application for a single logging-on process.
+Advanced input validation – All user-end input must be sanitized thoroughly. It should be free of suspicious characters and strings that can be malicious.
+Output regulation – Limits and restrictions should also be placed on the amount of data/information returned by the LDAP servers to the client.
+Preventing LDAP injection attacks with CxSAST
+
+CxSAST locates LDAP injection vulnerabilities by following all user input that is used as part of an LDAP command and warns if the input has not been validated or checked.
+
+References:
+
+https://www.owasp.org/index.php/Testing_for_LDAP_Injection_(OTG-INPVAL-006)
+
+http://find-sec-bugs.github.io/bugs.htm#LDAP_INJECTION 
 
                                                                   [  JavaScript Overview and Vulnerabilities  ]
 
@@ -366,6 +656,28 @@ What makes Checkmarx the best solution for JavaScript static code analysis?
 
 Your development team will be able to focus on resolving any issues quickly when you quickly give them the exact information that they need which will result in fewer problems which are much easier to fix as a result of the pre-release testing.
 
+ [ C++ Security Vulnerabilities and Language Overview ] 
+ 
+ C++ Security Vulnerabilities
+
+High-Risk C++ Security Vulnerabilities:
+
+Alongside SQL Injections (SQLi) 4, Command Injections and process control issues, which affect many contemporary programming languages, C++ applications also face threats from:
+
+LDAP Injections 52
+Command Injections 22
+XPath Injections 11
+Second Order SQL Injection
+Connection String Injection
+Resource Injection 9
+Securing your C++ Code
+
+Checkmarx’s CxSAST, a static code analysis solution 14, stands out amongst C++ testing solutions as not only the solution which will keep your C++ code free from security and compliance issues, but also as the tool which will contribute to your organization’s advancement when it comes to application security maturity.
+
+CxSAST works with the tools your developers are already using as it seamlessly integrates with most of the common development programs available at every stage of the SDLC. CxSAST’s features such as incremental code scanning and the best fix location made it ideal for any continuous integration continuous development (CICD) environment.
+
+When vulnerabilities are detected in the C++ code, CxSAST will not only identify the best fix location, but will also offer resources to the developer to understand how the attack vector work as well as remediation advice which will help them ensure similar mistakes are avoided in the future.
+Learn more about the coding languages, and their frameworks, that Checkmarx supports.
 
                                                                   [  C# Security Vulnerabilities and Language Overview  ]
 
@@ -414,7 +726,119 @@ Checkmarx’s CxSAST, a static code analysis solution 16, stands out amongst C# 
 CxSAST works with the tools your developers are already using as it seamlessly integrates with most of the common development programs available at every stage of the SDLC. CxSAST’s features such as incremental code scanning and the best fix location made it ideal for any continuous integration continuous development (CICD) environment.
 When vulnerabilities are detected in the C# code, CxSAST will not only identify the best fix location, but will also offer resources to the developer to understand how the attack vector work as well as remediation advice which will help them ensure similar mistakes are avoided in the future.
 
-                                                                   [  Top AppSec Gurus on Twitter  ]
+                                                                 [ .NET Security Vulnerabilities and Language Overview ]
+      
+      
+.NET Security Vulnerabilities
+
+High-Risk.NET Security Vulnerabilities:
+
+Alongside SQL Injections (SQLi) 1, Stored XSS and Reflected XSS, which affect many contemporary programming languages, .NET applications also face threats from:
+
+Code_Injection
+
+Command_Injection
+
+Connection_String_Injection
+
+LDAP_Injection
+
+Resource_Injection
+
+Second_Order_SQL_Injection
+
+UTF7_XSSX
+
+Path_Injection
+
+Securing your .NET Code
+
+Checkmarx’s CxSAST, a static code analysis solution 4, stands out amongst .NET testing solutions as not only the solution which will keep your .NET code free from security and compliance issues, but also as the tool which will contribute to your organization’s advancement when it comes to application security maturity.
+
+CxSAST works with the tools your developers are already using as it seamlessly integrates with most of the common development programs available at every stage of the SDLC. CxSAST’s features such as incremental code scanning and the best fix location made it ideal for any continuous integration continuous development (CICD) environment.
+
+When vulnerabilities are detected in the .NET code, CxSAST will not only identify the best fix location, but will also offer resources to the developer to understand how the attack vector work as well as remediation advice which will help them ensure similar mistakes are avoided in the future.
+
+                                                              [  Python Security Vulnerabilities and Language Overview ]
+
+Guido van Rossum, the creator of Python
+Despite sharing a similar background with Perl, Python has a different philosophy which emphasizes support for “common programming methodologies such as data structure design and object-oriented programming, and encourages programmers to write readable (and thus maintainable) code by providing an elegant but not overly cryptic notation.”
+
+Why Was Python Initially Created?
+Drawing its name from creator, and benevolent dictator for life (BDFL), Guido van Rossum’s love of Monty Python, this programming language was designed to be a “descendant of ABC that would appeal to Unix/C hackers.” Python was essentially designed to emphasize both code readability and productivity on the side of the developer. These two traits shine in terms of its simple syntax which is quite easy to learn and read, as well as the fact that its lack of a compilation step results in a rapid edit-test-debug cycle.
+In a brief summary written by van Rossum, he notes that other influences for creating Python include his gripes about many features of the ABC language, such as its lack of extensibility, which he remedied in Python. Additionally, the error handling in the Amoeba language also made van Rossum work to include exceptions as a feature in Python.
+While Python implementation began in December 1989, it was in February 1991 that the first code was published to alt.sources. Python 1.0 was released in January 1994 and included functional programming tools such as lambda, map, filter and reduce. Python 2.0 was released in October 2000 as the core development team moved to BeOpen.com where the PythonLabs team was formed. Included in Python 2.0 were list comprehensions as well as a garbage collection system for reference cycles. Version 3.0 (also known as “Python 3000” or “Py3K”) was released in December 2008 and broke backward compatibility. Major features included changing print from a statement to a built-in function, changing integer functionality and more.
+
+Core Python concepts taken from the Zen of Python written in 1999
+
+Beautiful is better than ugly
+Explicit is better than implicit
+Simple is better than complex
+Complex is better than complicated
+Readability counts
+Python Frameworks:
+
+Django
+
+What is Django?
+Django is a free and open-sourced web framework written in Python. As a web framework that follows the model–view–controller (MVC) pattern, Django allows for an easier creation of complex, database driven websites such as Pinterest, Instagram, The Washington Times, Bitbucket and others. Written in 2003, Django is named after the musician Django Reinhardt and was released under the permissive BSD software license in 2005 and since 2008 it has been maintained by the Django Software Foundation (DSF).
+Django developers meet annually in Europe at the DjangoCon every summer since 2008 with a parallel gathering held annually in September in the United States. Jango provides numerous ports to other languages including JavaScript (Swig), Ruby (Liquid), Perl (Twig), Python (Jinja) and others.
+
+Who uses Python?
+Python powers some of the largest sites on the internet with its clean code, reliability and satisfaction amongst the developers using it that comes from the fact that it both powerful and fun to work with. Some of the most notable websites using Python are:
+
+Youtube
+Dropbox
+Survey Monkey
+Google
+Reddit
+Bitly
+
+
+Python Security Vulnerabilities
+As with any coding language, security should be at the forefront for all Python and Django developers, especially those who are dealing with giant databases of sensitive personal information that could lead to terrible consequences if exploited or breached.
+
+High-Risk Python Security Vulnerabilities:
+Alongside SQL Injections (SQLi) 16, XSS (Cross Site Scripting) 7 and Cross Site Request Forgery 5, which affect most contemporary programming languages, Python applications also face threats from:
+
+LDAP Injections 18
+Command Injections 10
+XPath Injections 8
+Securing your Python Code
+
+Checkmarx’s CxSAST, a static code analysis solution 22, stands out amongst Python testing solutions as not only the solution which will keep your Python code free from security and compliance issues, but also as the tool which will contribute to your organization’s advancement when it comes to application security maturity.
+CxSAST works with the tools your developers are already using as it seamlessly integrates with most of the common development programs available at every stage of the SDLC. CxSAST’s features such as incremental code scanning and the best fix location made it ideal for any continuous integration continuous development (CICD) environment.
+When vulnerabilities are detected in the Python code, CxSAST will not only identify the best fix location, but will also offer resources to the developer to understand how the attack vector work as well as remediation advice which will help them ensure similar mistakes are avoided in the future.
+
+
+                                                [ Swift Security Vulnerabilities and Language Overview ] 
+ Swift Code Security
+
+With the amount of trust and sensitive personal data users put into the countless applications on our iPhone and other ‘iDevices’, it’s critical that all applications written Swift are secure against any threats and free from high-risk vulnerabilities. Due to the fact that Swift is essentially Objective-C with a different syntax, many of the same vulnerabilities that threaten Objective-C code also arise in applications written in Swift.
+
+High Level Security Threats for Swift Include:
+
+SQL Injections (SQLi) 15
+
+Reflected XSS 3
+
+Buffer Overflows 9
+
+Stored XSS
+
+And more…
+
+Is Your Swift Code Secure?
+
+Mobile application security 3 is a serious issue as our phones and tablets are important extensions of our lives and contain everything a hacker would need to steal our identity, savings, sensitive personal data and more.
+
+Two alarming findings in the 2015 Ponemon 1 report highlights how wide the gap between developers and proper mobile application security is, with one-third of the 640 organizations responding that they never test their apps for security issues before deployment, and that the vast majority of the surveyed companies test less than half of the applications they deploy at all.
+
+With the amount of damage that can be done to your company’s reputation and your user’s data, it’s critical that you scan your Swift code for any potential vulnerabilities before it goes to production and the best, fastest and most effective way to do that is by using a static code analysis tool that can integrate at all stages in your software development lifecycle (SDLC) within the tools that your developers are already using.
+
+Checkmarx’s CxSAST 8 is a static code analysis solution that supports Swift out of the box. Since Swift is the Objective-C with slightly different syntax, the Checkmarx scanner interprets Swift to Objective-C in the backend before scanning the code. As a result, Checkmarx scans Swift code for over 60 quality and security issues, including twelve of the most severe and most common issues that cannot be left unfixed.
+                                                                  
+                                                                  [  Top AppSec Gurus on Twitter  ]
 
 Staying on top of the latest developments and innovation in application security is key. The following list of thought leaders is an excellent source of information that will help you implement a successful application security program.
 
@@ -536,4 +960,91 @@ Game of Hacks can be played on desktop computers, tablets and mobile phones.
 
 https://www.gameofhacks.com
 
+
+
+
+
+
+
+
+Question 1 of 10
+In which of the following exploits does an attacker insert malicious code into a link that appears to be from a trustworthy source?
+XSS
+More about the answer:
+XSS attacks occur when an untrusted source injects code into an application or link that appears to be from a trusted source.
+Command injection
+Path traversal attack
+Buffer overflow
+Question 2 of 10
+In which of the following exploits does an attacker add SQL code to an application input form to gain access to resources or make changes to data?
+XSS
+Command injection
+SQL injection
+More about the answer:
+SQL injection attacks involve attackers inputting SQL code into an application form -- for example, a username or password -- to gain unauthorized access to resources. With this access, attackers can view and alter sensitive data, execute admin privileges, or conduct DDoS and other detrimental attacks.
+Buffer overflow
+Question 3 of 10
+Netsparker and Burp Suite Professional are examples of:
+Web-focused vulnerability detection tools
+More about the answer:
+Netsparker and Burp Suite Professional are both examples of web-focused vulnerability detection tools, a category of application security testing tools critical to detecting app issues.
+Antimalware
+Web application firewalls
+VPNs
+Question 4 of 10
+Which of the following is not on OWASP's top 10 web application security risks?
+Sensitive data exposure
+XML external entities
+Noncompliance
+More about the answer:
+Sensitive data exposure, XML external entities and insecure deserialization are all included on OWASP's top 10 list. Noncompliance is not on the list.
+Insecure deserialization
+Question 5 of 10
+Core Impact, Metasploit and w3af are all examples of:
+Cybersecurity search engines
+Frameworks
+More about the answer:
+These are all examples of security frameworks. Core Impact is a commercial pen testing framework, Metasploit is an open source pen testing framework, and w3af is a web application attack and audit framework.
+Password security tools
+SQL injection tools
+Question 6 of 10
+Web application firewalls (WAFs) help prevent which application layer attack?
+XSS
+SQL injection
+DDoS
+All of the above
+More about the answer:
+WAFs provide visibility into app data communicated via the HTTP app layer. A WAF can help prevent application attacks, including XSS, SQL injection and DDoS.
+Question 7 of 10
+Which of the following is not an example of an XSS attack?
+Stored XSS
+DNS XSS
+More about the answer:
+There are three types of XSS attacks: stored, reflected and DOM-based. DNS XSS is not a type of attack.
+Reflected XSS
+DOM-based XSS
+Question 8 of 10
+Which vulnerabilities may be missed by manual code reviews but picked up by automated pen testing tools?
+Logic flaws
+Authorization issues
+Encryption misconfigurations
+All of the above
+More about the answer:
+Logic flaws, authorization issues and encryption misconfigurations are often not detected without the use of automated pen testing tools.
+Question 9 of 10
+Which application security testing method is considered most costly?
+Static application security testing (SAST)
+Dynamic application security testing (DAST)
+More about the answer:
+DAST is done after an application is out of the production phase and already in use. Because DAST runs at this later stage, fixing discovered vulnerabilities is considered more costly.
+Mobile application security testing (MAST)
+All of the above
+Question 10 of 10
+What is the most common buffer overflow attack?
+Heap-based buffer overflow attack
+Stack-based buffer overflow attack
+More about the answer:
+Stack-based buffer overflow attacks are the most common type of buffer overflow attack. They exploit an app's memory space, which stores user input, also known as a stack.
+Integer buffer overflow attack
+Unicode buffer overflow attack
 
