@@ -1,5 +1,8 @@
-# CyberSecurityConcepts
+# Beginners Guide to Application Security
 
+New to Application Security?
+
+Need to know more about what options you have to safeguard your application? Overwhelmed with the information on the net and not sure which solution is best for your needs? Look no further. The AppSec Beginner’s Guide is here to provide you with all the information and resources you need to become a bonafide AppSec guru.
 Week after week, an increasing number of corporations and governments become the victims of cybercrime. These exploitations lead to losses of revenue and reputation which can are often impossible to recover for the affected organizations.
 
 The best defense in the fight against cybercrime is ensuring that your code in free of the vulnerabilities that can be exploited by malicious hackers. The best place to start is by ensuring that your organization’s developers are familiar with, and knowledgeable about, Application Security (AppSec). Checkmarx offers a number of tools to increase AppSec IQ which include whitepapers and in-depth blog articles.
